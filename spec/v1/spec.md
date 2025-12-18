@@ -1,9 +1,9 @@
 # HCT-A2A Extension Specification v1
 
 **Status**: Draft  
-**Author**: Stefan Wiest  
-**Created**: 2025-12-18  
-**Extension Name**: `hct-coordination`
+**Extension Name**: `hct-coordination`  
+**Extension URI**: `https://github.com/stefanwiest/hct-a2a`  
+**Version**: 1.0.0
 
 ---
 

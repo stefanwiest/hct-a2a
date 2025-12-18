@@ -1,0 +1,114 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/stefanwiest/hct-a2a/schema/v1/hct-signal.json",
+    "title": "HCT A2A Extension Signal",
+    "description": "Schema for HCT coordination signals in A2A message metadata",
+    "type": "object",
+    "properties": {
+        "hct": {
+            "type": "object",
+            "required": [
+                "signal"
+            ],
+            "properties": {
+                "signal": {
+                    "type": "string",
+                    "enum": [
+                        "cue",
+                        "fermata",
+                        "attacca",
+                        "vamp",
+                        "caesura",
+                        "tacet",
+                        "downbeat"
+                    ],
+                    "description": "The coordination signal type"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "Source agent identifier"
+                },
+                "performance": {
+                    "type": "object",
+                    "properties": {
+                        "tempo": {
+                            "type": "string",
+                            "enum": [
+                                "largo",
+                                "andante",
+                                "moderato",
+                                "allegro",
+                                "presto"
+                            ],
+                            "description": "Expected response timing"
+                        },
+                        "dynamics": {
+                            "type": "string",
+                            "enum": [
+                                "pp",
+                                "p",
+                                "mf",
+                                "f",
+                                "ff"
+                            ],
+                            "description": "Resource intensity level"
+                        },
+                        "urgency": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 10,
+                            "description": "Numeric urgency 1-10"
+                        },
+                        "timeout_ms": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "description": "Timeout in milliseconds"
+                        }
+                    }
+                },
+                "conditions": {
+                    "type": "object",
+                    "properties": {
+                        "hold_type": {
+                            "type": "string",
+                            "enum": [
+                                "human",
+                                "governance",
+                                "resource",
+                                "quality"
+                            ],
+                            "description": "Type of hold for fermata signals"
+                        },
+                        "quality_threshold": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "description": "Quality score threshold for vamp release"
+                        },
+                        "repeat_until": {
+                            "type": "string",
+                            "description": "Natural language condition for vamp"
+                        }
+                    }
+                },
+                "context": {
+                    "type": "object",
+                    "description": "Optional debugging/observability context",
+                    "properties": {
+                        "movement": {
+                            "type": "string",
+                            "description": "Current movement/phase name"
+                        },
+                        "objectives": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "description": "Current objectives"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
