@@ -46,6 +46,24 @@ Agents supporting this extension declare it in their Agent Card:
 | `vamp` | `tasks/sendSubscribe` | Repeat until condition |
 | `caesura` | `tasks/cancel` | Full stop |
 
+### Protobuf Format
+
+> [!NOTE]
+> This file is auto-generated from [`hct-spec`](https://github.com/stefanwiest/hct-spec) via CI/CD. Do not edit manually.
+
+The canonical Protobuf definition is available in [`hct.proto`](hct.proto):
+
+```protobuf
+// HCT A2A Extension Signal
+message HctSignal {
+  SignalType signal = 1;
+  string from = 2;
+  PerformanceDetails performance = 3;
+  ConditionDetails conditions = 4;
+  ContextDetails context = 5;
+}
+```
+
 ### A2A-Only Signals
 
 | Signal | Method | Semantics |

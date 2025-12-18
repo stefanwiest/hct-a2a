@@ -8,7 +8,7 @@
 
 ## Overview
 
-This extension adds coordination semantics from [Harmonic Coordination Theory](https://stefanwiest.de/research/papers/harmonic-coordination-theory/) to the [Agent-to-Agent (A2A) Protocol](https://github.com/a2aproject/a2a).
+This extension adds coordination semantics from [Harmonic Coordination Theory](https://stefanwiest.de/research/papers/harmonic-coordination-theory/) to the [Agent-to-Agent (A2A) Protocol](https://github.com/a2aproject/a2a). It allows agents to coordinate using musical signals like `cue`, `fermata` (hold), and `vamp` (loop), and control resource intensity via `dynamics`.
 
 ## Extension Registration
 
@@ -23,7 +23,25 @@ This extension adds coordination semantics from [Harmonic Coordination Theory](h
 }
 ```
 
-## Signals
+## Specification
+
+The canonical signal definition is provided in **Protocol Buffers** format, auto-generated from the central [`hct-spec`](https://github.com/stefanwiest/hct-spec).
+
+- [**spec/v1/hct.proto**](spec/v1/hct.proto) - Protobuf Definition
+- [**spec/v1/spec.md**](spec/v1/spec.md) - Human Printable Spec and Schema
+
+## Polyglot Samples
+
+We provide reference implementations demonstrating the **Conductor/Performer** relationship in four languages:
+
+| Language | Path | Concepts |
+|---|---|---|
+| **Python** | [`samples/python`](samples/python) | Full Conductor/Musician, `tempo`, `dynamics` |
+| **TypeScript** | [`samples/ts`](samples/ts) | Node.js asynchronous actors, `vamp`, `attacca` |
+| **Rust** | [`samples/rust`](samples/rust) | High-performance Tokio tasks, type-safe signals |
+| **Go** | [`samples/go`](samples/go) | Struct-based Orchestration, `fermata`, `caesura` |
+
+## Signals Reference
 
 | Signal | Description | A2A Method |
 |--------|-------------|------------|
@@ -35,18 +53,10 @@ This extension adds coordination semantics from [Harmonic Coordination Theory](h
 | `tacet` | Agent inactive (A2A only) | — |
 | `downbeat` | Global sync point (A2A only) | `notifications/message` |
 
-## Specification
-
-See [spec/v1/spec.md](spec/v1/spec.md) for the formal specification.
-
-## Schema
-
-See [spec/v1/schema.json](spec/v1/schema.json) for JSON Schema validation.
-
 ## Canonical Source
 
 Signal definitions are derived from:
-- **Source of Truth**: [`hct-spec/spec.yaml`](https://github.com/stefanwiest/genesis/tree/main/hct-spec/spec.yaml)
+- **Source of Truth**: [`hct-spec/spec.yaml`](https://github.com/stefanwiest/hct-spec/blob/main/spec.yaml)
 
 ## Related
 
